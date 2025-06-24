@@ -113,9 +113,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+      <section id="services" className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight">Our Core Services</h2>
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Core Services</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
               <Card key={service.title} className="text-center group hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -134,11 +134,11 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="about" className="py-16 md:py-24 bg-background">
+      <section id="about" className="py-16 sm:py-20 md:py-24 bg-background">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="max-w-xl">
-              <h2 className="font-headline text-3xl font-bold tracking-tight">About ZEE PLUS ELEVATORS</h2>
+              <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">About ZEE PLUS ELEVATORS</h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 At ZEE PLUS ELEVATORS, we are dedicated to providing the highest standards of reliability, safety, and customer satisfaction. Based in Jamnagar, we are your local experts for all vertical transportation needs, ensuring every project is completed with precision and care.
               </p>
@@ -157,7 +157,7 @@ export default function Home() {
           
           <div className="mt-16 md:mt-24">
               <div className="text-center">
-                  <h3 className="font-headline text-2xl font-bold tracking-tight">Our Leadership</h3>
+                  <h3 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight">Our Leadership</h3>
                   <p className="mt-2 text-muted-foreground">The experienced team steering our mission.</p>
               </div>
               <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-12">
@@ -179,10 +179,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section id="testimonials" className="py-16 sm:py-20 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto">
           <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight">What Our Clients Say</h2>
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">What Our Clients Say</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/80">
               Our commitment to quality and service speaks for itself through our clients' experiences.
             </p>
@@ -222,10 +222,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="py-16 md:py-24 bg-background">
+      <section id="projects" className="py-16 sm:py-20 md:py-24 bg-background">
         <div className="container mx-auto">
           <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight">Our Featured Projects</h2>
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Featured Projects</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
               A showcase of our commitment to quality and excellence in elevator solutions.
             </p>
@@ -251,10 +251,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="safety" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+      <section id="safety" className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto">
           <div className="text-center">
-              <h2 className="font-headline text-3xl font-bold tracking-tight">Our Commitment to Safety</h2>
+              <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Commitment to Safety</h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                   We prioritize the safety of our clients and passengers above all else, reflected in our rigorous standards.
               </p>
@@ -264,7 +264,7 @@ export default function Home() {
               <ShieldCheck className="h-48 w-48 text-primary opacity-80" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-headline text-2xl font-bold tracking-tight">Safety is Non-Negotiable</h3>
+              <h3 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight">Safety is Non-Negotiable</h3>
               <ul className="mt-6 space-y-4">
                 <li className="flex items-start gap-3">
                   <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
@@ -288,10 +288,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="py-16 md:py-24 bg-background">
+      <section id="faq" className="py-16 sm:py-20 md:py-24 bg-background">
         <div className="container mx-auto">
           <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Frequently Asked Questions</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
               Find answers to common questions about our services.
             </p>
@@ -311,10 +311,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="py-16 md:py-24">
+      <section id="contact" className="py-16 sm:py-20 md:py-24">
         <div className="container mx-auto">
           <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight">Get In Touch</h2>
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Get In Touch</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
               Have a question or need a quote? Reach out to us. Our team is ready to assist you.
             </p>
