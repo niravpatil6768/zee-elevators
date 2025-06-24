@@ -1,9 +1,11 @@
 "use client";
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { Button } from "@/components/ui/button";
@@ -27,6 +29,15 @@ type FormState = {
 } | null;
 
 async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
+  const firebaseConfig: FirebaseOptions = {
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  };
+
   try {
     const parsedData = formSchema.safeParse(formData);
 
@@ -37,17 +48,32 @@ async function submitContactForm(prevState: FormState, formData: FormData): Prom
       };
     }
     
-    // In a real application, you would send this data to your backend,
-    // send an email, or save it to a database.
-    console.log("Form submitted successfully:", parsedData.data);
+    // Only proceed with Firebase if a project ID is configured
+    if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+      let app;
+      if (!getApps().length) {
+        app = initializeApp(firebaseConfig);
+      } else {
+        app = getApps()[0];
+      }
+      const db = getFirestore(app);
+
+      await addDoc(collection(db, "website-inquiries"), {
+        ...parsedData.data,
+        createdAt: serverTimestamp(),
+      });
+    } else {
+        console.log("Firebase project ID not found. Skipping Firestore submission. Data:", parsedData.data);
+    }
 
     return {
-      message: "Thank you for your message! We'll get back to you soon.",
+      message: "Thank you! Your message has been sent.",
       success: true,
     };
   } catch (error) {
+    console.error("Firestore submission error:", error);
     return {
-      message: 'An unexpected error occurred. Please try again.',
+      message: 'An unexpected error occurred while sending your message. Please try again.',
       success: false,
     };
   }

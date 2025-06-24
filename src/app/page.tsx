@@ -361,8 +361,11 @@ export default function Home() {
                 ></iframe>
               </div>
             </div>
-            <Card className="p-2 h-fit">
-              <CardContent className="p-6">
+            <Card className="h-fit">
+              <CardHeader>
+                <CardTitle>Send Us an Inquiry</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <ContactForm />
               </CardContent>
             </Card>
