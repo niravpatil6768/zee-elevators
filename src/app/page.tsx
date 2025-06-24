@@ -188,36 +188,48 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="space-y-8">
+            <div className="flex flex-col gap-8">
               <div>
                 <h3 className="font-headline text-xl font-bold text-primary">Contact Information</h3>
-                <p className="text-muted-foreground">Fill out the form or use the information below to contact us.</p>
+                <p className="text-muted-foreground mt-2">Fill out the form or use the information below to contact us.</p>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <MapPin className="h-6 w-6 text-primary mt-1" />
+                  <MapPin className="h-6 w-6 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-bold">Our Office</h4>
-                    <p className="text-muted-foreground">123 Elevator Lane, Vertigo City, 12345</p>
+                    <p className="text-muted-foreground">Rydham Market, Plot No. 7, Shop No. 2, Kalyan Chowk, Morkanda Road, Jamnagar - 361 001.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Mail className="h-6 w-6 text-primary mt-1" />
+                  <Mail className="h-6 w-6 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-bold">Email Us</h4>
-                    <p className="text-muted-foreground">contact@zeeplus.com</p>
+                    <p className="text-muted-foreground">zeepluselevators@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Phone className="h-6 w-6 text-primary mt-1" />
+                  <Phone className="h-6 w-6 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-bold">Call Us</h4>
-                    <p className="text-muted-foreground">(123) 456-7890</p>
+                    <p className="text-muted-foreground">99982 07275 | 88664 66071</p>
                   </div>
                 </div>
               </div>
+              <div className="rounded-lg overflow-hidden shadow-xl aspect-video">
+                <iframe
+                  src="https://maps.google.com/maps?q=Rydham%20Market,%20Plot%20No.%207,%20Shop%20No.%202,%20Kalyan%20Chowk,%20Morkanda%20Road,%20Jamnagar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Zee Plus Elevators Location"
+                ></iframe>
+              </div>
             </div>
-            <Card className="p-2">
+            <Card className="p-2 h-fit">
               <CardContent className="p-6">
                 <ContactForm />
               </CardContent>

@@ -32,10 +32,9 @@ export default function Footer() {
             <div>
               <h4 className="font-headline font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-muted-foreground/80">
-                <li>contact@zeeplus.com</li>
-                <li>(123) 456-7890</li>
-                <li>123 Elevator Lane</li>
-                <li>Vertigo City, 12345</li>
+                <li>zeepluselevators@gmail.com</li>
+                <li>99982 07275 | 88664 66071</li>
+                <li className="max-w-xs">Rydham Market, Plot No. 7, Shop No. 2, Kalyan Chowk, Morkanda Road, Jamnagar - 361 001.</li>
               </ul>
             </div>
           </div>
