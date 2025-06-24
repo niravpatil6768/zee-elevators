@@ -1,10 +1,13 @@
+"use client";
+
 import Image from 'next/image';
-import { HardHat, Wrench, Zap, Phone, Mail, MapPin } from 'lucide-react';
+import { HardHat, Wrench, Zap, Phone, Mail, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import ContactForm from '@/components/contact-form';
 import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const services = [
@@ -29,23 +32,17 @@ export default function Home() {
     {
       quote: "ZEE PLUS transformed our building's accessibility. Their installation was seamless, and the new elevators are a dream. Highly professional team from start to finish.",
       name: 'Sarah Johnson',
-      company: 'CEO, Innovate Corp',
-      avatar: 'https://placehold.co/100x100.png',
-      hint: 'woman smiling',
+      rating: 5,
     },
     {
       quote: "The modernization of our elevators was handled with utmost care and precision. The team was efficient, and the result is a significant improvement in performance and aesthetics.",
       name: 'Michael Chen',
-      company: 'Property Manager, Vista Towers',
-      avatar: 'https://placehold.co/100x100.png',
-      hint: 'man portrait',
+      rating: 5,
     },
     {
       quote: "Their 24/7 maintenance service is a lifesaver. Quick response times and knowledgeable technicians give us peace of mind. I can't recommend ZEE PLUS enough.",
       name: 'David Rodriguez',
-      company: 'Operations Head, Grand Hotel',
-      avatar: 'https://placehold.co/100x100.png',
-      hint: 'man professional',
+      rating: 5,
     },
   ];
 
@@ -134,37 +131,54 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+      <section id="testimonials" className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto">
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tight">What Our Clients Say</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/80">
               Our commitment to quality and service speaks for itself through our clients' experiences.
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="flex flex-col justify-between text-left">
-                <CardContent className="pt-6">
-                  <p className="italic">"{testimonial.quote}"</p>
-                </CardContent>
-                <CardFooter className="flex items-center gap-4 mt-4">
-                  <Image
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                    data-ai-hint={testimonial.hint}
-                  />
-                  <div>
-                    <p className="font-bold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 4000,
+                stopOnInteraction: true,
+              }),
+            ]}
+            className="w-full max-w-lg md:max-w-4xl lg:max-w-6xl mx-auto mt-12"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="flex flex-col justify-between h-full bg-card text-card-foreground">
+                      <CardContent className="p-6 flex-grow">
+                        <p className="italic">"{testimonial.quote}"</p>
+                      </CardContent>
+                      <CardFooter className="flex flex-col items-center text-center gap-2 pt-4">
+                        <p className="font-bold">{testimonial.name}</p>
+                        <div className="flex">
+                          {Array.from({ length: testimonial.rating }).map((_, i) => (
+                            <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                          ))}
+                          {Array.from({ length: 5 - testimonial.rating }).map((_, i) => (
+                            <Star key={i} className="h-5 w-5 text-gray-300 fill-gray-300" />
+                          ))}
+                        </div>
+                      </CardFooter>
+                    </Card>
                   </div>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="text-primary-foreground bg-primary/50 hover:bg-primary/80 border-primary-foreground" />
+            <CarouselNext className="text-primary-foreground bg-primary/50 hover:bg-primary/80 border-primary-foreground" />
+          </Carousel>
         </div>
       </section>
 
