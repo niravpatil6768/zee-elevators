@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { HardHat, Wrench, Zap, ShieldAlert, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import ContactForm from '@/components/contact-form';
 import Link from 'next/link';
@@ -30,30 +30,27 @@ export default function Home() {
     },
   ];
 
-  const projects = [
+  const testimonials = [
     {
-      src: 'https://placehold.co/600x400.png',
-      hint: 'modern elevator lobby',
-      title: 'Corporate Headquarters',
-      description: 'State-of-the-art glass elevators for a downtown high-rise.',
+      quote: "ZEE PLUS transformed our building's accessibility. Their installation was seamless, and the new elevators are a dream. Highly professional team from start to finish.",
+      name: 'Sarah Johnson',
+      company: 'CEO, Innovate Corp',
+      avatar: 'https://placehold.co/100x100.png',
+      hint: 'woman smiling',
     },
     {
-      src: 'https://placehold.co/600x400.png',
-      hint: 'glass elevator interior',
-      title: 'Luxury Hotel',
-      description: 'Custom-designed scenic elevators with panoramic views.',
+      quote: "The modernization of our elevators was handled with utmost care and precision. The team was efficient, and the result is a significant improvement in performance and aesthetics.",
+      name: 'Michael Chen',
+      company: 'Property Manager, Vista Towers',
+      avatar: 'https://placehold.co/100x100.png',
+      hint: 'man portrait',
     },
     {
-      src: 'https://placehold.co/600x400.png',
-      hint: 'skyscraper exterior',
-      title: 'Residential Complex',
-      description: 'High-speed, efficient elevators for a multi-tower residential building.',
-    },
-    {
-      src: 'https://placehold.co/600x400.png',
-      hint: 'elevator installation',
-      title: 'Shopping Mall',
-      description: 'Heavy-duty escalators and elevators to manage high foot traffic.',
+      quote: "Their 24/7 maintenance service is a lifesaver. Quick response times and knowledgeable technicians give us peace of mind. I can't recommend ZEE PLUS enough.",
+      name: 'David Rodriguez',
+      company: 'Operations Head, Grand Hotel',
+      avatar: 'https://placehold.co/100x100.png',
+      hint: 'man professional',
     },
   ];
 
@@ -61,50 +58,18 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <section
         id="home"
-        className="relative flex h-[75vh] min-h-[500px] w-full items-center justify-center bg-cover bg-center"
+        className="relative flex h-screen min-h-[600px] w-full items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')" }}
-        data-ai-hint="elevator modern"
+        data-ai-hint="modern elevator interior"
       >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
-          <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            Elevating Your World with Precision
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 mx-auto max-w-5xl text-center text-white px-4">
+          <h1 className="font-headline text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            Elevating Your World with Safety and Style
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-neutral-200">
-            ZEE PLUS ELEVATORS delivers cutting-edge vertical transportation solutions with a focus on safety, reliability, and design.
+          <p className="mt-6 text-xl md:text-2xl font-light text-neutral-200 tracking-wider">
+            elevate with ease
           </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Button asChild size="lg" className="font-bold">
-              <Link href="#services">Our Services</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="font-bold border-2 border-white text-white bg-transparent hover:bg-white hover:text-secondary">
-              <Link href="#contact">Get a Quote</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="py-16 md:py-24 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <Image
-              src="https://placehold.co/600x400.png"
-              alt="ZEE PLUS ELEVATORS team"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-xl"
-              data-ai-hint="team meeting"
-            />
-          </div>
-          <div className="max-w-xl">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-primary">About ZEE PLUS ELEVATORS</h2>
-            <p className="mt-4 text-lg">
-              Since our founding, ZEE PLUS ELEVATORS has been a leader in the vertical transportation industry. Our mission is to provide safe, reliable, and innovative elevator solutions that meet the unique needs of each client.
-            </p>
-            <p className="mt-4">
-              Our team of certified technicians and engineers is dedicated to excellence, from initial design and installation to ongoing maintenance and modernization. We believe in building lasting relationships based on trust, quality, and unparalleled customer service.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -131,32 +96,60 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto">
-          <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight">Our Featured Projects</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              We take pride in our work. Here are a few examples of our successful installations.
+      
+      <section id="about" className="py-16 md:py-24 bg-secondary text-secondary-foreground">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <Image
+              src="https://placehold.co/600x400.png"
+              alt="ZEE PLUS ELEVATORS team"
+              width={600}
+              height={400}
+              className="rounded-lg shadow-xl"
+              data-ai-hint="team meeting"
+            />
+          </div>
+          <div className="max-w-xl">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-primary">About ZEE PLUS ELEVATORS</h2>
+            <p className="mt-4 text-lg">
+              Since our founding, ZEE PLUS ELEVATORS has been a leader in the vertical transportation industry. Our mission is to provide safe, reliable, and innovative elevator solutions that meet the unique needs of each client.
+            </p>
+            <p className="mt-4">
+              Our team of certified technicians and engineers is dedicated to excellence, from initial design and installation to ongoing maintenance and modernization. We believe in building lasting relationships based on trust, quality, and unparalleled customer service.
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project) => (
-              <div key={project.title} className="group relative overflow-hidden rounded-lg shadow-lg">
-                <Image
-                  src={project.src}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  data-ai-hint={project.hint}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-4 text-white">
-                  <h3 className="font-headline font-bold text-lg">{project.title}</h3>
-                  <p className="text-sm opacity-90">{project.description}</p>
-                </div>
-              </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tight">What Our Clients Say</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+              Our commitment to quality and service speaks for itself through our clients' experiences.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.name} className="flex flex-col justify-between text-left">
+                <CardContent className="pt-6">
+                  <p className="italic">"{testimonial.quote}"</p>
+                </CardContent>
+                <CardFooter className="flex items-center gap-4 mt-4">
+                  <Image
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full"
+                    data-ai-hint={testimonial.hint}
+                  />
+                  <div>
+                    <p className="font-bold">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  </div>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>

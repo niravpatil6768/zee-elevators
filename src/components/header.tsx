@@ -10,9 +10,9 @@ import { Separator } from '@/components/ui/separator';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' },
   { name: 'Services', href: '#services' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'About Us', href: '#about' },
+  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -45,7 +45,7 @@ export default function Header() {
             'font-headline text-xl font-bold tracking-tight',
             scrolled ? 'text-secondary' : 'text-white'
           )}>
-            ZEE PLUS
+            ZEE PLUS ELEVATORS
           </span>
         </Link>
 
@@ -83,7 +83,7 @@ export default function Header() {
                   <Link href="#home" onClick={closeMobileMenu} className="flex items-center gap-2">
                     <Building className="h-8 w-8 text-primary" />
                     <span className="font-headline text-xl font-bold tracking-tight text-secondary">
-                      ZEE PLUS
+                      ZEE PLUS ELEVATORS
                     </span>
                   </Link>
                   <SheetClose asChild>
