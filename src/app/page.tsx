@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { HardHat, Wrench, Zap, Phone, Mail, MapPin, Star, ShieldCheck, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,46 @@ export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
+
+  const animationRefs = {
+    services: useRef(null),
+    about: useRef(null),
+    leadership: useRef(null),
+    testimonials: useRef(null),
+    projects: useRef(null),
+    safety: useRef(null),
+    faq: useRef(null),
+    contact: useRef(null),
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-5', 'duration-700');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    Object.values(animationRefs).forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => {
+      Object.values(animationRefs).forEach((ref) => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      });
+    };
+  }, []);
 
   const services = [
     {
@@ -103,10 +143,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="container relative z-10 text-center text-white">
           <div className="mx-auto max-w-5xl">
-            <h1 className="font-headline text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            <h1 className="font-headline text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl animate-in fade-in slide-in-from-top-5 duration-1000">
               Elevating Your World with Safety and Style
             </h1>
-            <p className="mt-6 text-xl md:text-2xl font-light text-neutral-200 tracking-wider">
+            <p className="mt-6 text-xl md:text-2xl font-light text-neutral-200 tracking-wider animate-in fade-in slide-in-from-top-5 duration-1000 delay-300">
               elevate with ease
             </p>
           </div>
@@ -114,7 +154,7 @@ export default function Home() {
       </section>
 
       <section id="services" className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto text-center">
+        <div ref={animationRefs.services} className="container mx-auto text-center opacity-0">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Core Services</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
@@ -136,7 +176,7 @@ export default function Home() {
       
       <section id="about" className="py-16 sm:py-20 md:py-24 bg-background">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div ref={animationRefs.about} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center opacity-0">
             <div className="max-w-xl">
               <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">About ZEE PLUS ELEVATORS</h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -155,7 +195,7 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="mt-16 md:mt-24">
+          <div ref={animationRefs.leadership} className="mt-16 md:mt-24 opacity-0">
               <div className="text-center">
                   <h3 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight">Our Leadership</h3>
                   <p className="mt-2 text-muted-foreground">The experienced team steering our mission.</p>
@@ -180,7 +220,7 @@ export default function Home() {
       </section>
 
       <section id="testimonials" className="py-16 sm:py-20 md:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto">
+        <div ref={animationRefs.testimonials} className="container mx-auto opacity-0">
           <div className="text-center">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">What Our Clients Say</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/80">
@@ -223,7 +263,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className="py-16 sm:py-20 md:py-24 bg-background">
-        <div className="container mx-auto">
+        <div ref={animationRefs.projects} className="container mx-auto opacity-0">
           <div className="text-center">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Featured Projects</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -252,7 +292,7 @@ export default function Home() {
       </section>
 
       <section id="safety" className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto">
+        <div ref={animationRefs.safety} className="container mx-auto opacity-0">
           <div className="text-center">
               <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Our Commitment to Safety</h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -289,7 +329,7 @@ export default function Home() {
       </section>
 
       <section id="faq" className="py-16 sm:py-20 md:py-24 bg-background">
-        <div className="container mx-auto">
+        <div ref={animationRefs.faq} className="container mx-auto opacity-0">
           <div className="text-center">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Frequently Asked Questions</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -312,7 +352,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="py-16 sm:py-20 md:py-24">
-        <div className="container mx-auto">
+        <div ref={animationRefs.contact} className="container mx-auto opacity-0">
           <div className="text-center">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Get In Touch</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
