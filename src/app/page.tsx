@@ -50,6 +50,27 @@ export default function Home() {
       rating: 5,
     },
   ];
+  
+  const projects = [
+    {
+      src: "https://placehold.co/600x800.png",
+      title: "Modern Office Elevator",
+      location: "Jamnagar",
+      hint: "modern office elevator"
+    },
+    {
+      src: "https://placehold.co/600x800.png",
+      title: "Luxury Residential Tower",
+      location: "Rajkot",
+      hint: "luxury apartment elevator"
+    },
+    {
+      src: "https://placehold.co/600x800.png",
+      title: "City General Hospital",
+      location: "Jamnagar",
+      hint: "hospital elevator"
+    },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -178,6 +199,35 @@ export default function Home() {
             <CarouselPrevious className="text-primary-foreground bg-primary/50 hover:bg-primary/80 border-primary-foreground" />
             <CarouselNext className="text-primary-foreground bg-primary/50 hover:bg-primary/80 border-primary-foreground" />
           </Carousel>
+        </div>
+      </section>
+
+      <section id="projects" className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tight">Our Featured Projects</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+              A showcase of our commitment to quality and excellence in elevator solutions.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <div key={project.title} className="relative group overflow-hidden rounded-lg shadow-xl cursor-pointer">
+                <Image
+                  src={project.src}
+                  alt={`Project: ${project.title}`}
+                  width={600}
+                  height={800}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  data-ai-hint={project.hint}
+                />
+                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="text-white font-headline text-2xl font-bold">{project.title}</h3>
+                  <p className="text-neutral-300 mt-2">{project.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
