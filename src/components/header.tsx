@@ -4,9 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Building, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
-import { Separator } from '@/components/ui/separator';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -21,7 +20,7 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,8 +30,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header
@@ -52,7 +49,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -67,54 +64,46 @@ export default function Header() {
           ))}
         </nav>
         
-        <div className="hidden md:block">
-          <Button asChild>
-            <Link href="#contact">Get a Quote</Link>
-          </Button>
-        </div>
+        <div className="flex items-center gap-2">
+          <div className="hidden lg:block">
+            <Button asChild>
+              <Link href="#contact">Get a Quote</Link>
+            </Button>
+          </div>
 
-        <div className="md:hidden">
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className={cn(scrolled ? 'text-secondary' : 'text-white')} />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-8">
-                  <Link href="#home" onClick={closeMobileMenu} className="flex items-center gap-2">
-                    <Building className="h-8 w-8 text-primary" />
-                    <span className="font-headline text-xl font-bold tracking-tight text-secondary">
-                      ZEE PLUS ELEVATORS
-                    </span>
-                  </Link>
-                  <SheetClose asChild>
-                     <Button variant="ghost" size="icon"><X /></Button>
-                  </SheetClose>
+          <div className="flex items-center gap-2 lg:hidden">
+            <Button asChild>
+              <Link href="#contact">Get a Quote</Link>
+            </Button>
+            <Dialog open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className={cn('h-6 w-6', scrolled ? 'text-secondary' : 'text-white')} />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="h-screen w-screen max-w-full bg-[#252525]/f2 p-0 backdrop-blur-sm border-none rounded-none animate-in fade-in-0 duration-300">
+                <DialogClose asChild>
+                   <Button variant="ghost" size="icon" className="absolute top-6 right-6 text-white hover:bg-white/10 hover:text-white z-10">
+                        <X className="h-8 w-8" />
+                   </Button>
+                </DialogClose>
+                <div className="flex flex-col items-center justify-center h-full">
+                  <nav className="flex flex-col items-center gap-8">
+                    {navLinks.map((link) => (
+                      <DialogClose asChild key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-4xl font-bold text-white transition-colors hover:text-primary"
+                        >
+                          {link.name}
+                        </Link>
+                      </DialogClose>
+                    ))}
+                  </nav>
                 </div>
-                <nav className="flex flex-col gap-6">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-lg font-bold text-secondary transition-colors hover:text-primary"
-                        onClick={closeMobileMenu}
-                      >
-                        {link.name}
-                      </Link>
-                    </SheetClose>
-                  ))}
-                  <Separator />
-                  <SheetClose asChild>
-                    <Button asChild size="lg" onClick={closeMobileMenu}>
-                      <Link href="#contact">Get a Quote</Link>
-                    </Button>
-                  </SheetClose>
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
       </div>
     </header>
