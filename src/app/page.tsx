@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { HardHat, Wrench, Zap, Phone, Mail, MapPin, Star } from 'lucide-react';
+import { HardHat, Wrench, Zap, Phone, Mail, MapPin, Star, ShieldCheck, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import ContactForm from '@/components/contact-form';
@@ -227,6 +227,43 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="safety" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto">
+          <div className="text-center">
+              <h2 className="font-headline text-3xl font-bold tracking-tight">Our Commitment to Safety</h2>
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                  We prioritize the safety of our clients and passengers above all else, reflected in our rigorous standards.
+              </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center items-center">
+              <ShieldCheck className="h-48 w-48 text-primary opacity-80" strokeWidth={1.5} />
+            </div>
+            <div>
+              <h3 className="font-headline text-2xl font-bold tracking-tight">Safety is Non-Negotiable</h3>
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
+                  <span className="text-muted-foreground">Fully Certified and Experienced Engineers</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
+                  <span className="text-muted-foreground">Strict Adherence to National Safety Codes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
+                  <span className="text-muted-foreground">Regular and Thorough Maintenance Checks</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
+                  <span className="text-muted-foreground">Use of High-Quality, Industry-Approved Parts</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
