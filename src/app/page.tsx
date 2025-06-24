@@ -60,13 +60,15 @@ export default function Home() {
         data-ai-hint="modern elevator interior"
       >
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 mx-auto max-w-5xl text-center text-white px-4">
-          <h1 className="font-headline text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-            Elevating Your World with Safety and Style
-          </h1>
-          <p className="mt-6 text-xl md:text-2xl font-light text-neutral-200 tracking-wider">
-            elevate with ease
-          </p>
+        <div className="container relative z-10 text-center text-white">
+          <div className="mx-auto max-w-5xl">
+            <h1 className="font-headline text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+              Elevating Your World with Safety and Style
+            </h1>
+            <p className="mt-6 text-xl md:text-2xl font-light text-neutral-200 tracking-wider">
+              elevate with ease
+            </p>
+          </div>
         </div>
       </section>
 
