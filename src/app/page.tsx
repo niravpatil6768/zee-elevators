@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import Image from 'next/image';
 import { HardHat, Wrench, Zap, Phone, Mail, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,10 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
+
   const services = [
     {
       icon: <HardHat className="h-10 w-10 text-primary" />,
@@ -144,12 +149,7 @@ export default function Home() {
               align: "start",
               loop: true,
             }}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-                stopOnInteraction: true,
-              }),
-            ]}
+            plugins={[plugin.current]}
             className="w-full max-w-lg md:max-w-4xl lg:max-w-6xl mx-auto mt-12"
           >
             <CarouselContent>
@@ -163,11 +163,8 @@ export default function Home() {
                       <CardFooter className="flex flex-col items-center text-center gap-2 pt-4">
                         <p className="font-bold">{testimonial.name}</p>
                         <div className="flex">
-                          {Array.from({ length: testimonial.rating }).map((_, i) => (
-                            <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                          ))}
-                          {Array.from({ length: 5 - testimonial.rating }).map((_, i) => (
-                            <Star key={i} className="h-5 w-5 text-gray-300 fill-gray-300" />
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star key={i} className={`h-5 w-5 ${i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 fill-gray-300'}`} />
                           ))}
                         </div>
                       </CardFooter>
