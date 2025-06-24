@@ -89,26 +89,47 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="about" className="py-16 md:py-24 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <Image
-              src="https://placehold.co/600x400.png"
-              alt="ZEE PLUS ELEVATORS team"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-xl"
-              data-ai-hint="team meeting"
-            />
+      <section id="about" className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-xl">
+              <h2 className="font-headline text-3xl font-bold tracking-tight">About ZEE PLUS ELEVATORS</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                At ZEE PLUS ELEVATORS, we are dedicated to providing the highest standards of reliability, safety, and customer satisfaction. Based in Jamnagar, we are your local experts for all vertical transportation needs, ensuring every project is completed with precision and care.
+              </p>
+            </div>
+            <div>
+              <Image
+                src="https://placehold.co/600x400.png"
+                alt="ZEE PLUS ELEVATORS office"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-xl"
+                data-ai-hint="modern office team"
+              />
+            </div>
           </div>
-          <div className="max-w-xl">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-primary">About ZEE PLUS ELEVATORS</h2>
-            <p className="mt-4 text-lg">
-              Since our founding, ZEE PLUS ELEVATORS has been a leader in the vertical transportation industry. Our mission is to provide safe, reliable, and innovative elevator solutions that meet the unique needs of each client.
-            </p>
-            <p className="mt-4">
-              Our team of certified technicians and engineers is dedicated to excellence, from initial design and installation to ongoing maintenance and modernization. We believe in building lasting relationships based on trust, quality, and unparalleled customer service.
-            </p>
+          
+          <div className="mt-16 md:mt-24">
+              <div className="text-center">
+                  <h3 className="font-headline text-2xl font-bold tracking-tight">Our Leadership</h3>
+                  <p className="mt-2 text-muted-foreground">The experienced team steering our mission.</p>
+              </div>
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-12">
+                  <div className="text-center">
+                      <h4 className="font-headline font-bold text-xl">Hussain Bahasan</h4>
+                      <p className="text-muted-foreground mt-1">99982 07275</p>
+                  </div>
+                  <div className="text-center">
+                      <h4 className="font-headline font-bold text-xl">Rahil Bahasan</h4>
+                      <p className="text-muted-foreground mt-1">88664 66071</p>
+                  </div>
+                  <div className="text-center">
+                      <h4 className="font-headline font-bold text-xl">Zissan Bahasan</h4>
+                      <p className="text-muted-foreground mt-1">88664 66071</p>
+                      <p className="text-sm text-primary font-semibold">Electrical Engineer</p>
+                  </div>
+              </div>
           </div>
         </div>
       </section>
