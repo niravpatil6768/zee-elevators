@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { HardHat, Wrench, Zap, ShieldAlert, Phone, Mail, MapPin } from 'lucide-react';
+import { HardHat, Wrench, Zap, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -10,23 +10,18 @@ export default function Home() {
   const services = [
     {
       icon: <HardHat className="h-10 w-10 text-primary" />,
-      title: 'Installation',
-      description: 'Expert installation of modern, safe, and reliable elevator systems for new and existing buildings.',
+      title: 'Elevator Installation',
+      description: 'Providing state-of-the-art, custom elevator installations for new buildings.',
     },
     {
       icon: <Wrench className="h-10 w-10 text-primary" />,
       title: 'Maintenance',
-      description: 'Comprehensive maintenance plans to ensure your elevators operate smoothly and efficiently.',
+      description: 'Comprehensive maintenance plans to ensure safety and peak performance.',
     },
     {
       icon: <Zap className="h-10 w-10 text-primary" />,
       title: 'Modernization',
-      description: 'Upgrade your existing elevators with the latest technology for improved performance and aesthetics.',
-    },
-    {
-      icon: <ShieldAlert className="h-10 w-10 text-primary" />,
-      title: 'Repair',
-      description: '24/7 emergency repair services to minimize downtime and ensure passenger safety.',
+      description: 'Upgrading older elevators with the latest technology for better efficiency and safety.',
     },
   ];
 
@@ -73,15 +68,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="py-16 md:py-24">
+      <section id="services" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight">Our Comprehensive Services</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            We offer a full spectrum of elevator services to keep your buildings running efficiently and safely.
-          </p>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="font-headline text-3xl font-bold tracking-tight">Our Core Services</h2>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="text-center group hover:shadow-xl transition-shadow duration-300">
+              <Card key={service.title} className="text-center group hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
