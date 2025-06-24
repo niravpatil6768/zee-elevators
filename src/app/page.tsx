@@ -9,6 +9,7 @@ import ContactForm from '@/components/contact-form';
 import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export default function Home() {
   const plugin = React.useRef(
@@ -69,6 +70,25 @@ export default function Home() {
       title: "City General Hospital",
       location: "Jamnagar",
       hint: "hospital elevator"
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "What types of elevators do you install?",
+      answer: "We install a wide range of elevators, including passenger, freight, residential, and panoramic elevators. Our team works with you to determine the best solution for your building's specific needs and requirements."
+    },
+    {
+      question: "How often should an elevator be serviced?",
+      answer: "Regular maintenance is crucial for safety and performance. We recommend a monthly service check for most commercial elevators, in line with industry best practices and local regulations. We offer flexible maintenance plans to suit your needs."
+    },
+    {
+      question: "Do you offer 24/7 emergency support?",
+      answer: "Yes, we provide 24/7 emergency support to ensure your elevators are always running safely. Our dedicated team of technicians is on call to respond to any urgent issues promptly and efficiently."
+    },
+    {
+      question: "What is the process for modernizing an old elevator?",
+      answer: "Our modernization process begins with a thorough assessment of your existing equipment. We then propose a tailored upgrade plan that can include new controllers, door operators, cabin interiors, and safety features to improve performance, reliability, and aesthetics."
     },
   ];
 
@@ -264,6 +284,29 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+              Find answers to common questions about our services.
+            </p>
+          </div>
+          <div className="mt-12 max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left font-bold">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
