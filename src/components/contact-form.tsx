@@ -1,15 +1,27 @@
 "use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FirebaseOptions, getApps, initializeApp } from 'firebase/app';
-import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
-import { useEffect } from 'react';
-import { useFormState } from 'react-dom';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FirebaseOptions, getApps, initializeApp } from "firebase/app";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  serverTimestamp,
+} from "firebase/firestore";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -18,7 +30,9 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   phone: z.string().optional(),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  message: z
+    .string()
+    .min(10, { message: "Message must be at least 10 characters." }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -28,7 +42,10 @@ type FormState = {
   success: boolean;
 } | null;
 
-async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
+async function submitContactForm(
+  prevState: FormState,
+  formData: FormData
+): Promise<FormState> {
   const firebaseConfig: FirebaseOptions = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -43,11 +60,11 @@ async function submitContactForm(prevState: FormState, formData: FormData): Prom
 
     if (!parsedData.success) {
       return {
-        message: 'Invalid form data.',
+        message: "Invalid form data.",
         success: false,
       };
     }
-    
+
     // Only proceed with Firebase if a project ID is configured
     if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
       let app;
@@ -63,7 +80,10 @@ async function submitContactForm(prevState: FormState, formData: FormData): Prom
         createdAt: serverTimestamp(),
       });
     } else {
-        console.log("Firebase project ID not found. Skipping Firestore submission. Data:", parsedData.data);
+      console.log(
+        "Firebase project ID not found. Skipping Firestore submission. Data:",
+        parsedData.data
+      );
     }
 
     return {
@@ -73,7 +93,8 @@ async function submitContactForm(prevState: FormState, formData: FormData): Prom
   } catch (error) {
     console.error("Firestore submission error:", error);
     return {
-      message: 'An unexpected error occurred while sending your message. Please try again.',
+      message:
+        "An unexpected error occurred while sending your message. Please try again.",
       success: false,
     };
   }
@@ -115,7 +136,10 @@ export default function ContactForm() {
 
   return (
     <Form {...form}>
-      <form action={form.handleSubmit(data => formAction(data))} className="space-y-6">
+      <form
+        onSubmit={form.handleSubmit((data) => formAction(data))}
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -162,13 +186,22 @@ export default function ContactForm() {
             <FormItem>
               <FormLabel>Your Message</FormLabel>
               <FormControl>
-                <Textarea placeholder="Please describe your inquiry..." className="min-h-[120px]" {...field} />
+                <Textarea
+                  placeholder="Please describe your inquiry..."
+                  className="min-h-[120px]"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" size="lg" disabled={form.formState.isSubmitting}>
+        <Button
+          type="submit"
+          className="w-full"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+        >
           {form.formState.isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
