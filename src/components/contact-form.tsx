@@ -12,7 +12,6 @@ import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -46,13 +45,23 @@ async function submitContactForm(
   prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
+  // const firebaseConfig: FirebaseOptions = {
+  //   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  //   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  //   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  //   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  //   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  //   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  // };
+
   const firebaseConfig: FirebaseOptions = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    apiKey: "AIzaSyDW9MAvg0jMSERCUWqKQdSI81h7PmhyTNM",
+    authDomain: "zee-plus.firebaseapp.com",
+    projectId: "zee-plus",
+    storageBucket: "zee-plus.firebasestorage.app",
+    messagingSenderId: "346277329964",
+    appId: "1:346277329964:web:181d4b3773a4efc59be589",
+    measurementId: "G-R3FBCE8SJ3",
   };
 
   try {
@@ -66,7 +75,7 @@ async function submitContactForm(
     }
 
     // Only proceed with Firebase if a project ID is configured
-    if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+    if (1) {
       let app;
       if (!getApps().length) {
         app = initializeApp(firebaseConfig);

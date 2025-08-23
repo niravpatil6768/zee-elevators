@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Building } from "lucide-react";
+import logo from "@/assets/img/z-logo.png";
 import { Separator } from "./ui/separator";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,9 +11,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-start">
             <Link href="#home" className="flex items-center gap-2 mb-4">
-              <Building className="h-8 w-8 text-primary" />
+              {/* <Building className="h-8 w-8 text-primary" /> */}
+              <Image
+                src={logo}
+                alt="ZEE PLUS ELEVATORS"
+                width={32}
+                height={32}
+              />
               <span className="font-headline text-xl font-bold tracking-tight">
-                ZEE PLUS ELEVATORSdfg
+                ZEE PLUS ELEVATORS
               </span>
             </Link>
             <p className="text-sm text-muted-foreground/80">
@@ -70,7 +78,7 @@ export default function Footer() {
                 Rydham Market, Plot No. 7, Shop No. 2, Kalyan Chowk, Morkanda
                 Road, Jamnagar - 361 001.
               </li>
-              <li>99982 07275 | 88664 66071</li>
+              <li>9574887865 | 88664 66071</li>
             </ul>
           </div>
         </div>

@@ -39,6 +39,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import lift1 from "@/assets/img/lift1.png";
 
 export default function Home() {
   const plugin = React.useRef(
@@ -256,7 +257,7 @@ export default function Home() {
             </div>
             <div>
               <Image
-                src="https://placehold.co/600x400.png"
+                src={lift1}
                 alt="ZEE PLUS ELEVATORS office"
                 width={600}
                 height={400}
@@ -283,7 +284,7 @@ export default function Home() {
                 <h4 className="font-headline font-bold text-xl">
                   Hussain Bahasan
                 </h4>
-                <p className="text-muted-foreground mt-1">99982 07275</p>
+                <p className="text-muted-foreground mt-1">95748 87865</p>
               </div>
               <div className="text-center">
                 <h4 className="font-headline font-bold text-xl">
@@ -536,7 +537,7 @@ export default function Home() {
                   <div>
                     <h4 className="font-bold">Call Us</h4>
                     <p className="text-muted-foreground">
-                      99982 07275 | 88664 66071
+                      9574887865 | 88664 66071
                     </p>
                   </div>
                 </div>
