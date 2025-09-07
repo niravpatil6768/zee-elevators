@@ -1,30 +1,33 @@
 import Link from "next/link";
 import { Building } from "lucide-react";
-import logo from "@/assets/img/z-logo.png";
+import logo from "@/assets/img/zplus-logo.svg";
 import { Separator } from "./ui/separator";
 import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary text-secondary-foreground">
+    <footer
+      className="bg-secondary text-secondary-foreground"
+      style={{ backgroundColor: "#000000" }}
+    >
       <div className="container mx-auto py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-start">
-            <Link href="#home" className="flex items-center gap-2 mb-4">
+            <Link href="#home" className="flex items-center gap-2 mb-0 mt-0">
               {/* <Building className="h-8 w-8 text-primary" /> */}
               <Image
                 src={logo}
                 alt="ZEE PLUS ELEVATORS"
-                width={32}
-                height={32}
+                width={180}
+                // height={50}
               />
-              <span className="font-headline text-xl font-bold tracking-tight">
+              {/* <span className="font-headline text-xl font-bold tracking-tight">
                 ZEE PLUS ELEVATORS
-              </span>
+              </span> */}
             </Link>
-            <p className="text-sm text-muted-foreground/80">
+            {/* <p className="text-sm text-muted-foreground/80">
               elevate with ease
-            </p>
+            </p> */}
           </div>
           <div>
             <h4 className="font-headline font-bold mb-4">Quick Links</h4>

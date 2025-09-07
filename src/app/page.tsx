@@ -14,7 +14,8 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BackImage from "../../src/assets/img/elevator-bg.png";
+import BackImage from "../../src/assets/img/back_users.png";
+import SmallBackImage from "../../src/assets/img/back_users_small.png";
 import {
   Card,
   CardHeader,
@@ -182,12 +183,6 @@ export default function Home() {
       <section
         id="home"
         className="relative flex h-screen min-h-[600px] w-full items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${BackImage.src || BackImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
         data-ai-hint="modern elevator interior"
       >
         <div className="absolute inset-0 bg-black/60" />
@@ -201,6 +196,19 @@ export default function Home() {
             </p>
           </div>
         </div>
+        <style jsx>{`
+          #home {
+            background-image: url(${BackImage.src || BackImage});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+          @media (max-width: 700px) {
+            #home {
+              background-image: url(${SmallBackImage.src || SmallBackImage});
+            }
+          }
+        `}</style>
       </section>
 
       <section
@@ -306,7 +314,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
+      {/* <section
         id="testimonials"
         className="py-16 sm:py-20 md:py-24 bg-primary text-primary-foreground"
       >
@@ -363,9 +371,9 @@ export default function Home() {
             <CarouselNext className="text-primary-foreground bg-primary/50 hover:bg-primary/80 border-primary-foreground" />
           </Carousel>
         </div>
-      </section>
+      </section> */}
 
-      <section id="projects" className="py-16 sm:py-20 md:py-24 bg-background">
+      {/* <section id="projects" className="py-16 sm:py-20 md:py-24 bg-background">
         <div
           ref={animationRefs.projects}
           className="container mx-auto opacity-0"
@@ -403,7 +411,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="safety"
